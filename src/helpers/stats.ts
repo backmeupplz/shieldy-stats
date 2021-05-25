@@ -1,3 +1,4 @@
+import { getBotUsers } from './getBotUsers'
 import { getShieldy } from './shieldy'
 
 export let stats: any = {}
@@ -6,9 +7,14 @@ async function updateStats() {
   console.info('Started updating')
   const start = new Date()
 
-  // Shieldy
   try {
     stats.shieldy = await getShieldy()
+    const shieldyUsers = await getBotUsers(
+      '@shieldy_bot',
+      process.env.SHIELDY,
+      process.env.SHIELDY_TOKEN
+    )
+    stats.shieldy.userCount = shieldyUsers
   } catch (err) {
     console.log(err)
   }
