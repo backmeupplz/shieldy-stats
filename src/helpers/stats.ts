@@ -26,8 +26,7 @@ async function updateStats() {
 }
 
 let updating = false
-updateStats()
-setInterval(async () => {
+async function _updateStats() {
   if (updating) {
     return
   }
@@ -39,4 +38,9 @@ setInterval(async () => {
   } finally {
     updating = false
   }
+}
+
+_updateStats()
+setInterval(async () => {
+  _updateStats()
 }, 24 * 60 * 60 * 1000)

@@ -40,6 +40,7 @@ export async function getBotUsers(
             const count = await bot.telegram.getChatMembersCount(id)
             res(count)
           } catch (err) {
+            console.log(err.message || err)
             res(0)
           }
         })
