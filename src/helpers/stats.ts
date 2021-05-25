@@ -12,7 +12,7 @@ async function updateStats() {
     const shieldyUsers = await getBotUsers(
       '@shieldy_bot',
       process.env.SHIELDY,
-      process.env.SHIELDY_TOKEN
+      process.env.TOKEN
     )
     stats.shieldy.userCount = shieldyUsers
   } catch (err) {
